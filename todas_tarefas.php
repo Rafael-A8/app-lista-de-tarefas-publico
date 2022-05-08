@@ -18,24 +18,25 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 		<script>
-			function editar() {
+			function editar(id) {
 				// oque irei fazer
 
 				// criar um form de edição
 				let form = document.createElement('form')
 				form.action = '#'
 				form.method = 'post'
+				form.className = 'row'
 
 				//criar um input para entrada do texto
 				let inputtarefa = document.createElement('input')
 				inputtarefa.type = 'text'
 				inputtarefa.name = 'tarefa'
-				inputtarefa.className = 'form-control'
+				inputtarefa.className = ' col-9 form-control'
 
 				//criar um button para envio do form
 				let button = document.createElement('button')
 				button.type = 'submit'
-				button.className = 'btn btn-info'
+				button.className = ' col-3 btn btn-info'
 				button.innerHTML = 'Atualizar'
 
 				//incluindo inputtarefa no form
@@ -45,9 +46,17 @@
 				form.appendChild(button)
 
 				//teste
-				console.log(form)
+				//console.log(form)
 
+				//alert(id)
 
+				let tarefa = document.getElementById('tarefa_'+id)
+
+				//limpando o texto da tarefa para poder incluir o form
+				tarefa.innerHTML = ''
+
+				//incluindo o form criado na página
+				tarefa.insertBefore(form, tarefa[0])
 
 			}
 		</script>
@@ -82,12 +91,12 @@
 								<hr />
 								<?php foreach($tarefas as $indice => $tarefa) { ?>
 									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div class="col-sm-9">
+										<div class="col-sm-9" id="tarefa_<?= $tarefa->id ?>">
 											<?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger"></i>
-											<i class="fas fa-edit fa-lg text-info" onclick="editar()"></i>
+											<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>)"></i>
 											<i class="fas fa-check-square fa-lg text-success"></i>
 									</div>
 								</div>
