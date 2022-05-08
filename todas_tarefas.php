@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 		<script>
-			function editar(id) {
+			function editar(id, txt_tarefa) {
 				// oque irei fazer
 
 				// criar um form de edição
@@ -32,6 +32,13 @@
 				inputtarefa.type = 'text'
 				inputtarefa.name = 'tarefa'
 				inputtarefa.className = ' col-9 form-control'
+				inputtarefa.value = txt_tarefa // dessa forma os valores vao ficar dentro da caixa.
+
+				//criando um imput hidden para guardar o id da tarefa
+				let inputid = document.createElement('input')
+				inputid.type = 'hidden'
+				inputid.name = 'id'
+				inputid.value = id
 
 				//criar um button para envio do form
 				let button = document.createElement('button')
@@ -41,6 +48,9 @@
 
 				//incluindo inputtarefa no form
 				form.appendChild(inputtarefa)
+
+				//incluindo inputid no form
+				form.appendChild(inputid)
 
 				//incluindo o button no form
 				form.appendChild(button)
@@ -96,7 +106,10 @@
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger"></i>
-											<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>)"></i>
+											<i class="fas fa-edit fa-lg text-info" 
+												onclick="editar
+													(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')">
+											</i>
 											<i class="fas fa-check-square fa-lg text-success"></i>
 									</div>
 								</div>
