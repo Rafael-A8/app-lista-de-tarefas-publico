@@ -16,6 +16,42 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+		<script>
+			function editar() {
+				// oque irei fazer
+
+				// criar um form de edição
+				let form = document.createElement('form')
+				form.action = '#'
+				form.method = 'post'
+
+				//criar um input para entrada do texto
+				let inputtarefa = document.createElement('input')
+				inputtarefa.type = 'text'
+				inputtarefa.name = 'tarefa'
+				inputtarefa.className = 'form-control'
+
+				//criar um button para envio do form
+				let button = document.createElement('button')
+				button.type = 'submit'
+				button.className = 'btn btn-info'
+				button.innerHTML = 'Atualizar'
+
+				//incluindo inputtarefa no form
+				form.appendChild(inputtarefa)
+
+				//incluindo o button no form
+				form.appendChild(button)
+
+				//teste
+				console.log(form)
+
+
+
+			}
+		</script>
+
 	</head>
 
 	<body>
@@ -51,7 +87,7 @@
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger"></i>
-											<i class="fas fa-edit fa-lg text-info"></i>
+											<i class="fas fa-edit fa-lg text-info" onclick="editar()"></i>
 											<i class="fas fa-check-square fa-lg text-success"></i>
 									</div>
 								</div>
