@@ -73,6 +73,10 @@
 			function remover(id) {
 				location.href = 'todas_tarefas.php?acao=remover&id'+id;
 			}
+
+			function marcarRealizada(id) {
+				location.href = 'todas_tarefas.php?acao=marcarRealizada&id'+id;
+			}
 		</script>
 
 	</head>
@@ -115,7 +119,7 @@
 												onclick="editar
 													(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')">
 											</i>
-											<i class="fas fa-check-square fa-lg text-success"></i>
+											<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?= $tarefa->id ?>)"></i>
 									</div>
 								</div>
 
